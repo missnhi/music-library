@@ -119,7 +119,16 @@ const addTrack = function(name, artist, album) {
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
-
+  let newPlaylist = {
+    id: generateUid(),
+    name: name,
+    tracks: []
+  };
+  library.playlists[newPlaylist.id] = newPlaylist;
+  
+  //checking if it added
+  console.log(library.playlists);
+  
 }
 
 
@@ -136,6 +145,6 @@ const printSearchResults = function(query) {
 // printTracks();
 // printPlaylist('p01');
 // addTrackToPlaylist('t01', 'p02');
-addTrack('1998', 'Adele', '25');
-// addPlaylist();
+// addTrack('1998', 'Adele', '25');
+addPlaylist("Nhi Phan Playlist");
 // printSearchResults();

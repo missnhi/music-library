@@ -104,7 +104,16 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
-
+  let newTrack = {
+    id: generateUid(),
+    name: name,
+    artist: artist,
+    album: album
+  };
+  library.tracks[newTrack.id] = newTrack;
+  
+  //checking if it added
+  console.log(library.tracks);
 }
 
 
@@ -126,7 +135,7 @@ const printSearchResults = function(query) {
 // printPlaylists();
 // printTracks();
 // printPlaylist('p01');
-addTrackToPlaylist('t01', 'p02');
-// addTrack();
+// addTrackToPlaylist('t01', 'p02');
+addTrack('1998', 'Adele', '25');
 // addPlaylist();
 // printSearchResults();

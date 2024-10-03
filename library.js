@@ -75,7 +75,6 @@ const printPlaylist = function(playlistId) {
   
   for (let each of tracks) {
     let track = library.tracks[each];
-    // console.log(track);
     console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
   }
 }
@@ -83,7 +82,16 @@ const printPlaylist = function(playlistId) {
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
-
+  //check track and playlist exist
+  if (!library.tracks[trackId] || !library.playlists[playlistId]) {
+    return "Not a valid track or playlist ID";
+  }
+  
+  //add track to playlist
+  library.playlists[playlistId].tracks.push(trackId);
+  
+  //checking if it pushed
+  // console.log(library.playlists[playlistId]);
 }
 
 
@@ -117,8 +125,8 @@ const printSearchResults = function(query) {
 
 // printPlaylists();
 // printTracks();
-printPlaylist('p01');
-// addTrackToPlaylist();
+// printPlaylist('p01');
+addTrackToPlaylist('t01', 'p02');
 // addTrack();
 // addPlaylist();
 // printSearchResults();

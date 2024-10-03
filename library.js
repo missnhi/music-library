@@ -57,6 +57,7 @@ const printTracks = function() {
   let tracks = library.tracks;
   for (let each in tracks) {
     let track = tracks[each];
+    console.log(track);
     console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
   }
 }
@@ -67,7 +68,16 @@ const printTracks = function() {
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 const printPlaylist = function(playlistId) {
-
+  const playlist = library.playlists[playlistId];
+  const tracks = playlist.tracks;
+  
+  console.log(`${playlist.id}: ${playlist.name} - ${playlist.tracks.length} tracks`);
+  
+  for (let each of tracks) {
+    let track = library.tracks[each];
+    // console.log(track);
+    console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
+  }
 }
 
 
@@ -105,9 +115,9 @@ const printSearchResults = function(query) {
 
 }
 
-printPlaylists();
-printTracks();
-// printPlaylist();
+// printPlaylists();
+// printTracks();
+printPlaylist('p01');
 // addTrackToPlaylist();
 // addTrack();
 // addPlaylist();

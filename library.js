@@ -133,18 +133,40 @@ const addPlaylist = function(name) {
 
 
 // STRETCH:
-// given a query string string, prints a list of tracks
+// Given a query string string, prints a list of tracks
 // where the name, artist or album contains the query string (case insensitive)
 // tip: use "string".search("tri") 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 const printSearchResults = function(query) {
-
-}
+  const lowerCaseQuery = query.toLowerCase();
+  let foundQuery = false;
+  
+  for (let trackId in library.tracks) {
+    const track = library.tracks[trackId];
+    if (
+      track.name.toLowerCase().search(lowerCaseQuery) !== -1 ||
+      track.artist.toLowerCase().search(lowerCaseQuery) !== -1 ||
+      track.album.toLowerCase().search(lowerCaseQuery) !== -1
+    ) {
+      console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
+      foundQuery = true;
+    }
+  }
+  
+  if (!foundQuery) {
+    console.log(`No results found for "${query}"`);
+  }
+};
 
 // printPlaylists();
 // printTracks();
 // printPlaylist('p01');
 // addTrackToPlaylist('t01', 'p02');
 // addTrack('1998', 'Adele', '25');
-addPlaylist("Nhi Phan Playlist");
-// printSearchResults();
+// addPlaylist("Nhi Phan Playlist");
+
+
+printSearchResults("Code");
+printSearchResults("Week");
+printSearchResults("Adele-non");
+printSearchResults("John");
